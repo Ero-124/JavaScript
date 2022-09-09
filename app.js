@@ -312,23 +312,22 @@ console.log(first, second,last ); */
 
 // a)նշվածից գտնել այն թվերի գումարը, որոնք առանց մնացորդ բաժանվում են 4֊ի:
 
-// let a = 19;
-// let b = 3;
-// let c = 21;
+// let a = 12;
+// let b = 15;
+// let c = 20;
+// let result = 0;
 
-// if((a + b + c) % 4 === 0) {
-//    console.log("a + b  + c:", a + b + c);
-// } else if((a + b) % 4 === 0) {
-//    console.log("a + b:", a + b);
+// if(a % 4 === 0) {
+//   result += a;
 // }
-// if((a + c) % 4 === 0) {
-//    console.log("a + c:", a + c);
+// if(b % 4 === 0) {
+//   result += b;
 // }
-// if((b + c) % 4 === 0) {
-//    console.log("b + c:", b + c);
+// if(c % 4 === 0) {
+//   result += c;
 // }
 
-
+// console.log(result);
 
 
 // b) նշվածից գտնել այն թվերի արտադրյալը, որոնք առանց մնացորդ բաժանվում են կամ 3֊ի, կամ՝ 4֊ի:
@@ -825,10 +824,188 @@ console.log(first, second,last ); */
 //    }
 //    return indexes;
 //  };
- 
+
 //  alert(twoSum([10, 12, 13, 14, 15, 16], 29));
 
 
+// Lesson 9 =======================================================================
+
+/* 1.   Կազմել ֆունկցիա, որը կընդունի տեքստային մեծություն և կվերադարձնի “text is polindrome” եթե տեքստը պոլինդրոմ է(ձախից աջ և աջից ձախ կարդալիս նույն տեքստն է ստացվում), հակառակ դեպքում կվերադարձնի “text is not polindrome” */
+
+// let str = "aacbcaa";
+
+// function isPolindrome(text) {
+//   for (let i = 0; i < text.length / 2; i++) {
+//     if (text[i] !== text[text.length - 1 - i]) {
+//       console.log("Text is not polindrome");
+//     }
+//   }
+//   console.log("Text is polindrome");
+// }
+
+// (isPolindrome(str));
+
+// 2. Կազմել ֆունկցիա որը կընդունի զանգված, որի էլէմենտները օբյեկտներ են, և երկրորդ արգումենտ թվային փոփոխական(age)։
+/* Ֆունկցիան վերադարձնելու նոր զանգված որտեղ լինելու են այն մարդիկ որոնց տարիքը <= age-ից։ */
+
+// let people = [{
+//     firstName: "Aram",
+//     lastName: "Sargsyan",
+//     age: 25
+//   },
+//   {
+//     firstName: "Armen",
+//     lastName: "Gasparyan",
+//     age: 30
+//   },
+// ]
+
+
+// function smallAge(arr, age) {
+//   let newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i].age <= age) {
+//       newArr.push(arr[i].firstName, arr[i].lastName)
+//     } 
+//   }
+//   return newArr
+// }
+// console.log(smallAge(people, 30))
+
+
+// function hexadecimalToDecimal(hexVal) {
+//   var len = hexVal.length;
+//   var base = 1;
+//   var dec_val = 0;
+
+//   for (var i = len - 1; i >= 0; i--) {
+
+//     if (hexVal.charAt(i) >= '0' &&
+//       hexVal.charAt(i) <= '9') {
+//       dec_val += (hexVal.charAt(i).charCodeAt(0) - 48) * base;
+
+//       base = base * 16;
+//     }
+//     else if (hexVal.charAt(i) >= 'A' &&
+//       hexVal.charAt(i) <= 'F') {
+//       dec_val += (hexVal.charAt(i).charCodeAt(0) - 55) * base;
+
+//       base = base * 16
+//     }
+//   }
+//   return dec_val;
+// }
+// console.log(hexadecimalToDecimal("0FE9AB"));
+
+
+
+
+// function decimalToHex(x) {
+//   var parsed = parseInt(x, 10);
+//   if (isNaN(parsed)) { return 0; }
+
+//   hexstr = ""
+//   while(parsed > 0) {
+//     var value = parsed % 16
+//     hexstr = (
+//       value == 10 ? "A" : (
+//         value == 11 ? "B" : (
+//         value == 12 ? "C" : (
+//         value == 13 ? "D" : (
+//         value == 14 ? "E" : (
+//         value == 15 ? "F": value)))))) + hexstr
+//     parsed = parseInt(parsed / 16)
+//   }
+
+//   return '0x'+ hexstr;
+// }
+
+// console.log(decimalToHex('231'));
+
+
+// ====================================== Code Signal ============================================
+
+// Year To century
+
+// function solution(year) {
+//   let centuryCount = 0;
+// while (year > 0){
+//   year = year - 100;
+//   centuryCount = centuryCount + 1;
+// }
+// return centuryCount;
+// }
+
+
+
+
+
+// function solution(inputArray) {
+//   var arr = inputArray;
+//   var x = 0;
+//   var y = 0;
+//   var p = -Infinity;
+//   for (var i = 0; i < arr.length; i++) {
+//     x = arr[i];
+//     y = arr[i + 1];
+//     if (x * y > p) {
+//       p = x * y;
+//     };
+//   };
+//   return p;
+// };
+
+
+// solution([3, 6, -2, -5, 7, 3])
+
+
+
+// function solution(n) {
+//   return 2*n*(n-1) +1;
+// }
+
+
+
+
+
+// function solution(statues) {
+//   let statuesNeeded = 0;
+//   statues.sort((a, b) => {
+//     return a - b;
+//   })
+//   for (let i = 0; i < statues.length; i++) {
+
+//     if (statues[i + 1] - statues[i] > 1) {
+//       statuesNeeded += statues[i + 1] - statues[i] - 1;
+//     }
+//   }
+//   return statuesNeeded;
+// }
+
+// console.log(solution([2,3,6,8]));
+
+
+
+
+
+
+
+// function solution(sequence) {
+//   var found = 0;
+//   for (var i = 0; i < sequence.length; i++) {
+
+//     if (sequence[i] <= sequence[i - 1]) {
+//       found++;
+//       if (found > 1) return false;
+
+//       if (sequence[i] <= sequence[i - 2] && sequence[i + 1] <= sequence[i - 1]) return false;
+//     }
+
+//   }
+//   return true;
+// }
+
+// console.log(solution([2, 1, 3, 4]));
 
 
 
@@ -2764,7 +2941,4 @@ a.foo(); */
 
 
 
-
-
-
-
+// https://github.com/jeantimex/javascript-problems-and-solutions#array
