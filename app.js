@@ -312,22 +312,23 @@ console.log(first, second,last ); */
 
 // a)նշվածից գտնել այն թվերի գումարը, որոնք առանց մնացորդ բաժանվում են 4֊ի:
 
-// let a = 12;
-// let b = 15;
-// let c = 20;
-// let result = 0;
+// let a = 19;
+// let b = 3;
+// let c = 21;
 
-// if(a % 4 === 0) {
-//   result += a;
+// if((a + b + c) % 4 === 0) {
+//    console.log("a + b  + c:", a + b + c);
+// } else if((a + b) % 4 === 0) {
+//    console.log("a + b:", a + b);
 // }
-// if(b % 4 === 0) {
-//   result += b;
+// if((a + c) % 4 === 0) {
+//    console.log("a + c:", a + c);
 // }
-// if(c % 4 === 0) {
-//   result += c;
+// if((b + c) % 4 === 0) {
+//    console.log("b + c:", b + c);
 // }
 
-// console.log(result);
+
 
 
 // b) նշվածից գտնել այն թվերի արտադրյալը, որոնք առանց մնացորդ բաժանվում են կամ 3֊ի, կամ՝ 4֊ի:
@@ -809,9 +810,6 @@ console.log(first, second,last ); */
 
 
 
-
-
-
 // const twoSum = (array, goal) => {
 //    let indexes = [];
 //    for (let i = 0; i < array.length; i++) {
@@ -826,6 +824,8 @@ console.log(first, second,last ); */
 //  };
 
 //  alert(twoSum([10, 12, 13, 14, 15, 16], 29));
+
+
 
 
 // Lesson 9 =======================================================================
@@ -861,7 +861,7 @@ console.log(first, second,last ); */
 // ]
 
 
-// function smallAge(arr, age) {
+// function x(arr, age) {
 //   let newArr = [];
 //   for (let i = 0; i < arr.length; i++) {
 //     if (arr[i].age <= age) {
@@ -870,7 +870,7 @@ console.log(first, second,last ); */
 //   }
 //   return newArr
 // }
-// console.log(smallAge(people, 30))
+// console.log(x(people, 30))
 
 
 // function hexadecimalToDecimal(hexVal) {
@@ -899,28 +899,740 @@ console.log(first, second,last ); */
 
 
 
+// Examples =======================================================================================
 
-// function decimalToHex(x) {
-//   var parsed = parseInt(x, 10);
-//   if (isNaN(parsed)) { return 0; }
 
-//   hexstr = ""
-//   while(parsed > 0) {
-//     var value = parsed % 16
-//     hexstr = (
-//       value == 10 ? "A" : (
-//         value == 11 ? "B" : (
-//         value == 12 ? "C" : (
-//         value == 13 ? "D" : (
-//         value == 14 ? "E" : (
-//         value == 15 ? "F": value)))))) + hexstr
-//     parsed = parseInt(parsed / 16)
+// 1.Տրվ. է միաչափ թվային զանգվածը: Կազմել ֆունկցիա, որը որպես արգումենտ կընդունի
+// զանգված եւ կվերադարձնի զանգվածի մեծությամբ երկրորդ մեծագույն էլէմենտը։
+// Օր.
+// const numbersArray = [4, 7, 5, 10, 25, 37, 8, 15]
+// function getSecondMaxElement(array) {
+// ...
+// }
+// getSecondMaxElement(numbersArray) // => 25
+
+
+// by Vahe
+
+// const numbersArray = [4, 7, 5, 10,  37, 8, 25];
+
+// const getSecondMaxElement = (inputArray) => {
+//   const arrLength = inputArray.length;  
+//   let secondMax;  
+//   let firstMax                              
+//   if (inputArray[0] > inputArray[1]) {    
+//     firstMax = inputArray[0];
+//     secondMax = inputArray[1]
+//   }
+//   else {
+//     firstMax = inputArray[1];
+//     secondMax = inputArray[0]
 //   }
 
-//   return '0x'+ hexstr;
+//   for (let i = 2; i < arrLength; ++i) {
+//    if (inputArray[i] > firstMax ) {
+//     secondMax =  firstMax;
+//     firstMax = inputArray[i]
+//    }
+//    else {
+//     if (inputArray[i] > secondMax) {
+//       secondMax = inputArray[i]
+//     }
+//    }
+//   }
+
+//   return secondMax
 // }
 
-// console.log(decimalToHex('231'));
+// console.log(getSecondMaxElement(numbersArray));
+
+
+
+
+// by me
+
+// const numArr = [4, 7, 5, 10, 25, 37, 8, 15]
+
+// function numbersArray(array) {
+//     let max = array[0];
+//     let afterMax = 0;
+//     for (let i = 1; i < array.length; i++) {
+//         if (max < array[i]) {
+//             afterMax = max;
+//             max = array[i];
+//         }
+//         else if (max !== array[i] && afterMax < array[i]) {
+//             afterMax = array[i];
+//         }
+//     }
+//     return afterMax
+// }
+// console.log(numbersArray(numArr));
+
+
+
+
+
+
+
+// 2.Տրվ. է տեքստ։ Տեքստում վերջակետերից(.) հետո բառերը սկսվում են փոքրատառով։ Կազմել
+// ֆունկցիա, որը որպես արգումենտ կընդունի տեքստ, տեքստում “.”-ից հետո սկսվող բառերի
+// առաջին տառը կդարձնի մեծատառ եւ կվերադարձնի փոփոխված տեքստը։
+// Օր.
+// const testText = “Today is Sunday.we test our JavaScript knowledge.it is been a month we learn
+// JS.sometimes it is difficult.nevertheless we continue to learn.”
+// function getCheckedText(text) {
+// ...
+// }
+// getCheckedText(testText) // => Today is Sunday.We test our JavaScript knowledge.It is been a
+//month we learn JS.Sometimes it is difficult.Nevertheless we continue to learn.”
+
+
+// const testText = "Today is Sunday.we test our JavaScript knowledge.it is been a month we learn JS.sometimes it is difficult.nevertheless we continue to learn."
+
+// function getCheckedText(text) {
+//   const textArray = text.split(".");
+
+//   for (let i = 0; i < textArray.length - 1; ++i) {
+//     textArray[i] = textArray[i][0].toUpperCase() + textArray[i].slice(1)
+//   }
+
+//   return textArray.join(".")
+// }
+
+// console.log(getCheckedText(testText))
+
+
+
+
+// 3.Տրվ. է տեքստային զանգված։ Կազմել ֆունկցիա, որը որպես արգումենտ կընդունի զանգված,
+// կհեռացնի զանգվածի կրկնվող էլեմենտները եւ կվերադարձնի փոփոխված զանգվածը։
+// Ֆունկցիայի ներսում չեք փոփոխելու արգումենտից ստացվող զանգվածը։
+// Օր.
+// const textArray = [“car”, “home”, “car”, “table”, “table”, “TV”, “home”];
+// function removeDuplicates(array){
+// ...
+// }
+// removeDuplicates(textArray) // => [“car”, “home”, “table”, “TV”]
+
+
+// by Vahe Ghevondyan
+
+// const textArray = ["car", "home", "car", "table", "table", "TV", "home"];
+
+// function removeDuplicates(array){
+//   const obj = {};
+//   for (let el of array) {
+//     if (!obj[el]) {
+//       obj[el] = el
+//     }
+//   }
+//   return Object.values(obj)
+// }
+
+// console.log(removeDuplicates(textArray))
+
+// by me
+
+// const textArray = ["car", "home", "car", "table", "table", "tv", "home"];
+
+// function removeDuplicate(arr) {
+//     var newArr = [];
+//     for (i = 0; i < arr.length; i++) {
+//         if (newArr.indexOf(arr[i]) === -1) {
+//             newArr.push(arr[i]);
+//         }
+//     }
+//     return newArr;
+// }
+// console.log(removeDuplicate(textArray));
+
+
+// Lesson 11 =====================================================================================
+
+// const user = {
+//    name: null,
+//    surname: null,
+//    setUserData(userName, userSurname) {
+//       user.name = userName,
+//       user.surname = userSurname
+//    },
+//    getUserData() {
+//       return {
+//          userName : user.name,
+//          userSurname: user.surname 
+//       }
+//    }
+// }
+// user.setUserData("firstName", "lastName");
+// console.log(user.getUserData());
+
+
+
+
+// const user = {
+//    name: null,
+//    surname: null,
+//    setName(userName) {
+//       this.name = userName
+//    },
+//    setSurname(userSurname) {
+//       this.surname = userSurname
+//    },
+//    getName() {
+//       return {
+//          name: this.userName
+//       }
+//    },
+//    getSurname() {
+//       return {
+//          surname: this.userSurname
+//       }
+//    }
+// }
+// console.log(user.setName("Martin"));
+// console.log(user.setSurname("Mkhitaryan"));
+// console.log(user.getName());
+// console.log(user.getSurname());
+
+
+
+
+/* 1.տրվ․ է հետևյալ երկչափ զանգվածը, որն իրենից ներկայացնում է քառակուսային մատրից
+const twoDimArr = [[2, 5, 7, 8], [0, 2, 8, 4], [5, 3, 9, 2], [1, 3, 7, 2]]
+Գտնել */
+
+// a) մատրիցի գլխավոր անկյունագծից վերև գտնվող էլեմենտների գումարը
+
+// const twoDimArr = [
+//    [2, 5, 7, 8],
+//    [0, 2, 8, 4],
+//    [5, 3, 9, 2],
+//    [1, 3, 7, 2]
+// ];
+
+
+// let result = 0;
+// for(let i = 0; i < twoDimArr.length - 1; i++) {
+//    for(let j = i + 1; j < twoDimArr[i].length; j++) {
+//       result += twoDimArr[i][j]
+//    }
+// }
+// console.log(result);
+
+
+
+// մատրիցի երկրորդական անկյունագծից ներքև գտնվող էլեմենտների արտադրյալը
+
+// const twoDimArr = [
+//    [2, 5, 7, 8],
+//    [0, 2, 8, 4],
+//    [5, 3, 9, 2],
+//    [1, 3, 7, 2]
+// ];
+
+// let mult = 1;
+// let i2 = 0;
+// for(let i = twoDimArr.length - 1; i > 0; i--) {
+//    for(let j = twoDimArr.length - 1; j > i2; j--) {
+//       mult *= twoDimArr[i][j]
+//    }
+//    i2++
+// }
+// console.log(mult);
+
+
+
+// մատրիցի այն տողը, որի էլեմենտների գումարը մեծագույնն է
+
+// const twoDimensionalArr = [
+//    [2, 5, 7, 8],
+//    [0, 2, 8, 4],
+//    [5, 3, 9, 2],
+//    [1, 3, 7, 2]
+// ];
+
+// function sumArrRow(twoDimArr) {
+//    let rowSum;
+//    let rowSum2 = 0;
+//    let rowIndex;
+
+//    for (let i = 0; i < twoDimArr.length; i++) {
+//       rowSum = 0;
+//       for (let j = 0; j < twoDimArr[i].length; j++) {
+//          rowSum += twoDimArr[i][j];
+
+//          if (rowSum > rowSum2) {
+//             rowSum2 = rowSum;
+//             rowIndex = i;
+//          }
+//       }
+
+//    }
+//    return twoDimArr[rowIndex]
+// }
+
+// console.log(sumArrRow(twoDimensionalArr));
+
+
+
+
+// 2.տրվ․ է հետևյալ օբյեկտը
+
+/* a) սահմանել օբյեկտի մեթոդներ(օր․setName, getInfo, ...), որոնք որպես արգումենտ կընդունեն
+արժեքներ և օբյեկտի null արժեքներին կվերագրենարգումենտի արժեքները։ */
+
+// const company = {
+//    name: null,
+//    owner: null,
+//    employees: null,
+//    setName(companyName) {
+//       this.name = companyName
+//    },
+//    setOwnerName(ownerName) {
+//       this.owner = ownerName
+//    },
+//    setEmployees(employeesCount) {
+//       this.employees = employeesCount
+//    },
+//    getInfo: function () {
+//       return {
+//          name: this.name,
+//          owner: this.owner,
+//          employees: this.employees
+//       }
+//    }
+// }
+
+// company.setName("Dior");
+// company.setOwnerName("Mr.Jim");
+// company.setEmployees(24);
+// console.log(company.getInfo());
+
+// b) սահմանել մեկ այլ օբյեկտ(օր․ company2), որն ունի company օբյեկտի հատկությունները և չունի մեթոդներ։  bind(), call(), apply() մեթոդները թեստավորել որպես կոնտեքստ փոխանցելով company2 օբյեկտը։
+
+// const company = {
+//    name: "Dior",
+//    owner: "Mr.Jim",
+//    employees: 24,
+
+//    setName() {
+//       this.ownerName
+//    },
+//    setOwnerName() {
+//       this.owner
+//    },
+//    setEmployees() {
+//       this.employees
+//    },
+// }
+
+// const company2 = {
+//    name: "Dior",
+//    owner: "Mr.Jim",
+//    employees: 24,
+// }
+
+// company.setName.call(company2)
+// company.setOwnerName.apply(company2)
+// let boundFunc = company.setEmployees.bind(company2)
+// console.log(company2);
+
+
+// Lesson 13 =======================================================================================================
+
+
+
+// let a = 15;
+// const promise = new Promise((resolve, reject) => {
+//    if(a <= 10) {
+//       resolve("Chisht e")
+//    }
+//    reject("sxal e")
+// })
+
+// promise.then((resolve) => console.log(resolve)).catch((reject) => console.log(reject));
+
+
+
+//callback function
+// function a() {
+//   console.log("I am a Callback function");
+// }
+
+// function b(callback) {
+//   callback();
+// }
+
+// b(a);
+
+// callback function 1st version
+// function callback_1() {
+//   console.log("Callback function executed");
+// }
+
+// console.log("first");
+// setTimeout(callback_1, 2000); //callback function executes after 2 seconds
+// console.log("second");
+
+/**************************************************************************/
+
+//callback function 2nd version
+// setTimeout(() => console.log("Callback function executed"), 3000); //callback function executes after 3 seconds
+// console.log("first");
+// console.log("second");
+
+/***********************************************************************/
+
+//callback function with arguments
+// function callback_2(name) {
+//   console.log(`${name} function executed`);
+// }
+
+// console.log("first");
+// setTimeout(callback_2, 3000, "callback2"); //callback function executes after 3 seconds
+// console.log("second");
+
+/***********************************************************************/
+
+//clearTimeout
+// function callback(name) {
+//   console.log(`callback function executed`);
+// }
+
+// console.log("first");
+// let callbackId = setTimeout(callback, 1000); //callback function executes after 3 seconds
+
+// console.log("second");
+// clearTimeout(callbackId);
+
+/*******************************************************************/
+
+//setInterval function
+// function callback() {
+//   console.log(`I execute every 2 seconds`);
+// }
+
+// setInterval(callback, 2000);
+
+// clearInterval function
+// function callback() {
+//   console.log(`I executed every 2 seconds`);
+// }
+
+// const id = setInterval(callback, 2000);
+
+// function stopSetInterval() {
+//   clearInterval(id);
+// }
+
+// setTimeout(stopSetInterval, 5000);
+
+
+
+/* 1.setInterval-ի միջոցով սահմանում եք ֆունկցիա, որը յուրաքանչյուր 2
+վայրկյանը մեկ կկանչվի և կտպի "Hello" տեքստը: setTimeout-ի միջոցով
+սահմանում եք ֆունկցիա, որը 7 վայրկյան հետո կկանչի clearInterval մեթոդը,
+որից հետո setInterval ֆունկցիայի աշխատանքը կդադարեցվի։
+ */
+
+
+// const id = setInterval(function() {
+//    console.log("Hello");
+// }, 2000)
+
+
+// function stopInterval() {
+//    setTimeout(function() {
+//       clearInterval(id);
+//    }, 7000)
+// }
+
+// stopInterval();
+
+
+
+
+
+/* 2.Տրված է const numsArray = [2, -7, 5, 4, -8, -9, 10] զանգվածը։ Սահմանել promise
+օբյեկտ, որը հաջող ելք կունենա և կվերադարձնի "Array all elements are
+positive" արժեք, եթե զանգվածի բոլոր էլեմենտները դրական են։ Promise-ը
+կունենա error ելք և կվերադարձնի "At least one element in array is negative"
+արժեք, եթե զանգվածն ունի առնվազը մեկ բացասական էլեմենտ։ Անկախ
+promise-ի արժեքից("fulfilled" or "rejected"), այն կտպի նաև "We tested promise
+and we don't know whether or not it is 'fulfilled' or 'rejected'".
+Զանգվածի արժեքները փոխել, որ promise-ն ունենա նաև "fulfilled" state: */
+
+// const numsArray = [2, -7, 5, 4, -8, -9, 10];
+
+// let promise = new Promise(function (resolve, reject) {
+//    for(let i = 0; i < numsArray.length; i++) {
+//       if (numsArray.every((val) => val > 0)) {
+//          resolve("Array all elements are positive")
+//       }  
+//       reject("At least one element in array is negative")
+//    }
+
+// })
+
+// promise.then(
+//    (result) => console.log(result)
+//    )
+//    .catch(
+//    (error) => console.log(error))
+//    .finally(() => console.log("We tested promise and we don't know whether or not it is 'fulfilled' or 'rejected'"));
+
+
+
+
+
+
+
+/***********************************************************************************/
+
+//promise -synchrone resolve
+// let promise = new Promise(function (resolve, reject) {
+//   resolve("done");
+// });
+
+// console.log(promise);
+
+//promise -synchrone reject and resolve
+// let promise = new Promise(function (resolve, reject) {
+//   resolve("done");
+//   reject("Rejected");
+// });
+// console.log(promise);
+
+//promise - asynchrone action
+// let promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => resolve("done"), 2000);
+// });
+// console.log(promise);
+
+/***************************************************** */
+
+//testing then method with "fulfilled" state
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => resolve("Resolved"), 1500);
+// });
+
+// promise.then(
+//   (result) => console.log(result), // "Resolved"
+//   (error) => console.log(error) // skipped execution
+// );
+
+//testing then method with "rejected" state
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => reject("Generated Error"), 1000);
+// });
+
+// promise.then(
+//   (result) => console.log(result), // skipped execution
+//   (error) => console.log(error) // "Generated Error"
+// );
+
+//testing only "fulfilled" state
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => resolve("Promise fulfilled"), 1000);
+// });
+
+// promise.then(
+//   (result) => console.log(result) // "Promise fulfilled"
+// );
+
+//testing only "fulfilled" state
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => reject("Promise rejected"), 1000);
+// });
+
+// promise.then(
+//   null,
+//   (error) => console.log(error) // "Promise rejected"
+// );
+
+//testing catch
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => reject("Promise rejected"), 1000);
+// });
+
+// promise.catch(
+//   (error) => console.log(error) // "Promise rejected"
+// );
+
+//testing then and catch together
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => resolve("Promise fulfilled"), 1000);
+//   setTimeout(() => reject("Promise rejected"), 1000);
+// });
+
+// promise
+//   .then((result) => console.log(result)) // "Promise fulfilled"
+//   .catch((error) => console.log(error)); // "Promise rejected"
+
+//testing finally method
+// const promise = new Promise((resolve, reject) => {
+//   throw new Error("Generated error");
+// });
+
+// promise
+//   .finally(() => console.log("Promise finished"))
+//   .catch((err) => console.log(err));
+
+// let a = 12;
+// const promise = new Promise((resolve, reject) => {
+//   if (a <= 10) {
+//     resolve(`a = ${a}`);
+//   } else {
+//     reject(`${a} greater than 10`);
+//   }
+// });
+
+// promise.then((result) => console.log(result)).catch((err) => console.log(err));
+
+
+
+
+// Lesson 14 ==========================================================================================
+
+// class Animal {
+//    constructor(name) {
+//      this.speed = 0;
+//      this.name = name;
+//    }
+//    run(speed) {
+//      this.speed = speed;
+//      alert(`${this.name} бежит со скоростью ${this.speed}.`);
+//    }
+//    stop() {
+//      this.speed = 0;
+//      alert(`${this.name} стоит неподвижно.`);
+//    }
+//  }
+
+//  let animal = new Animal("Мой питомец");
+
+// animal.run(7);
+// animal.stop();
+
+
+
+// class Rabbit extends Animal {
+//    hide() {
+//      alert(`${this.name} прячется!`);
+//    }
+//  }
+
+//  let rabbit = new Rabbit("Белый кролик");
+
+//  rabbit.run(15); // Белый кролик бежит со скоростью 15.
+//  rabbit.hide(); // Белый кролик прячется!
+
+
+
+// Lesson 15 ====================================================================================
+
+
+// GET
+// const url = "http://localhost:3000/";
+// fetch(`${url}cars`).then((response) => response.json())
+// .then((result) => console.log(result))
+
+// POST
+// const url = "http://localhost:3000/";
+// fetch(`${url}cars`).then((response) => response.json())
+//    .then((result) => console.log(result))
+
+// const newCar = {
+//    "Model": "Chevrolet Camaro",
+//    "Horsepower": 333,
+//    "Year": 2010,
+//    "Origin": "USA"
+// }
+
+// fetch(`${url}cars`, {
+//    method: "POST",
+//    headers: {
+//       "Content-Type": "application/json"
+//    },
+//    body: JSON.stringify(newCar)
+// })
+
+
+
+// PUT
+// const url = "http://localhost:3000/";
+// fetch(`${url}cars`).then((response) => response.json());
+
+// const updateCar = {
+//    "id": 3,
+//    "Model": "Vaz 2107",
+//    "Horsepower": 89, // 75
+//    "Year": 2011,
+//    "Origin": "Russia"
+// }
+
+// fetch(`${url}cars/${updateCar.id}`, {
+//    method: "PUT",
+//    headers: {
+//       "Content-type": "application/json"
+//    },
+//    body: JSON.stringify(updateCar)
+// })
+// .then((response) => response.json())
+// .then((result) => console.log(result));
+
+
+// PATCH
+// const url = "http://localhost:3000/";
+
+// fetch(`${url}cars`).then(response => response.json())
+
+// fetch(`${url}cars/1`, {
+//    method: "PATCH",
+//    headers: {
+//       "Content-Type": "application/json"
+//    },
+//    body: JSON.stringify({
+//       Horsepower: 382] // 326
+//    })
+// })
+// .then(response => response.json())
+// .then(result => console.log(result));
+
+
+
+
+// const url = "http://localhost:3000/";
+
+// fetch(`${url}cars`).then(response => response.json())
+
+// fetch(`${url}cars/2`, {
+//    method: "DELETE"
+// })
+
+
+// Լրացուցիչ խնդիր
+
+// const textArray = ["t", "ttttt", "ttt", "tttt", "ttttt"];
+
+// function longText(arr) {
+//    let newArr = [];
+//    let sortArr = arr.sort((a, b) => b.length - a.length);
+//    let firstIndex = sortArr[0];
+//    for(let i = 0; i < sortArr.length; i++) {
+//       if(firstIndex.length <= sortArr[i].length) {
+//          firstIndex = sortArr[i];
+//          newArr.push(firstIndex);
+//       } 
+//    }
+//    return newArr;
+// }
+
+// console.log(longText(textArray));
+
+
+
 
 
 // ====================================== Code Signal ============================================
@@ -982,7 +1694,7 @@ console.log(first, second,last ); */
 //   return statuesNeeded;
 // }
 
-// console.log(solution([2,3,6,8]));
+// console.log(solution([6,2,3,8]));
 
 
 
@@ -1006,6 +1718,336 @@ console.log(first, second,last ); */
 // }
 
 // console.log(solution([2, 1, 3, 4]));
+
+
+
+
+
+// matrix sum 
+// function solution(matrix) {
+//   let sum = 0;
+//   for (let row = 0; row < matrix.length; row++) {
+//     for (let col = 0; col < matrix[row].length; col++) {
+//       if (matrix[row][col] === 0) {
+//         if (row + 1 < matrix.length) {
+//           matrix[row + 1][col] = 0;
+//         }
+//       } else {
+
+//         sum += matrix[row][col];
+//       }
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(solution([
+//   [0, 1, 1, 2],
+//   [0, 5, 0, 0],
+//   [2, 0, 3, 3]
+// ]));
+
+
+
+
+// function solution(matrix) {
+//   let sum = 0;
+//   for (let row = 0; row < matrix.length; row++) {
+//     const currRow = matrix[row];
+//     for (let col = 0; col < currRow.length; col++) {
+//       if (currRow[col] === 0) {
+//         if (row + 1 < matrix.length) {
+//           matrix[row + 1][col] = 0;
+//         }
+//       } else {
+
+//         sum += currRow[col];
+//       }
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(solution([
+//   [0, 1, 1, 2],
+//   [0, 5, 0, 0],
+//   [2, 0, 3, 3]
+// ]));
+
+
+
+
+
+
+// function solution(txt1, txt2) {
+//   let result = 0;
+//   let text1 = txt1.split("");
+//   let text2 = txt2.split("");
+
+//   for (let i = 0; i < text1.length; i++) {
+//     for (let j = 0; j < text2.length; j++) {
+//       if (text1[i] == text2[j]) {
+//         result++;
+//         text2.splice(j, 1);
+//         break;
+//       }
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(solution("aabcc", "adcaa"));
+
+
+
+
+
+// function solution(n) {
+//   n = n.toString();
+//   let first = 0;
+//   let second = 0;
+
+//   for(let i = 0; i < n.length / 2; i++) {
+//       first += +n[i];
+//   }
+//   for(let j = n.length / 2; j < n.length; j++) {
+//       second += +n[j];
+//   }
+//   if(first === second) {
+//       return true
+//   }
+//   return false
+// }
+
+// console.log(solution(1230));
+
+
+
+
+
+
+
+// function solution(a) {
+//   let people = a.filter((el) => el !== -1);
+//   people.sort((a, b) => b - a);
+
+//   for (let i = 0; i < a.length; i++) {
+//     if (a[i] !== -1) {
+//       a[i] = people.pop()
+//     }
+//   }
+//   return a
+// }
+
+// console.log(solution([-1, 150, 190, 170, -1, -1, 160, 180]));
+
+
+
+
+
+
+
+
+
+// function solution(inputString) {
+//   while(inputString.includes('(')) {
+//       const endBracket = inputString.indexOf(')');
+//       const startBracket = inputString.lastIndexOf('(', endBracket);
+//       const s = inputString.slice(startBracket +1, endBracket);
+//       const reversedS = s.split('').reverse().join("");
+//       inputString = inputString.slice(0, startBracket) + reversedS + inputString.slice(endBracket +1)
+//   }
+//   return inputString
+// }
+
+// console.log(solution("(bar)"));
+
+
+
+
+
+
+
+
+
+// function solution(a) {
+//   let team1 = 0;
+//   let team2 = 0;
+//   let newArr = [];
+//   for(let i = 0; i < a.length; i+=2) {
+//       team1+= a[i]
+//       newArr = [];
+//       newArr.push(team1);
+//   }
+//   for(let j = 1; j < a.length; j+=2) {
+//       team2+= a[j];
+//   }
+//   newArr.push(team2)
+
+//   return newArr;
+// }
+
+
+
+
+
+
+// Add border
+// function solution(picture) {
+//   picture = picture.map(f => '*'.concat(f, '*'))
+//   var l = picture[0].length;
+//   picture.unshift(Array(l).fill('*').join(''));
+//   picture.push(Array(l).fill('*').join(''))
+//   return picture;
+// }
+
+
+
+
+
+
+
+// function solution(a, b) {
+//   const maxDiff = maxDiffs(a, b);
+//   if (maxDiff.length > 2 || maxDiff.length === 1) return false;
+//   const [diff1, diff2] = maxDiff;
+//   return a[diff1] === b[diff2] && a[diff2] === b[diff1];
+// }
+// const maxDiffs = (a, b) => {
+
+//   let maxDiff = [];
+//   for (let i = 0; i < a.length; i++) {
+
+//     if (a[i] !== b[i]) {
+
+//       maxDiff.push(i);
+//     }
+//   }
+//   return maxDiff;
+// }
+
+
+
+
+
+
+
+// function solution(inputString) {
+//   var odd = 0;
+//   var arr = inputString.split('');
+//   var el;
+//   var pos;
+//   while (arr.length) {
+//       el = arr.pop();
+//       pos = arr.indexOf(el);
+//       if (pos === -1) {
+//           odd++;
+//       } else {
+//           arr.splice(pos,1);
+//       }
+//   }
+
+//   return odd < 2;
+// }
+
+
+
+
+
+
+// function solution(yourLeft, yourRight, friendsLeft, friendsRight) {
+//   const yourMax = Math.max(yourLeft, yourRight);
+//   const firendsMax = Math.max(friendsRight, friendsLeft);
+//   if(firendsMax !== yourMax) return false
+//   return yourLeft + yourRight === friendsLeft + friendsRight
+// }
+
+
+
+
+
+// function solution(inputArray) {
+    
+//   var max = Math.abs(inputArray[1] - inputArray[0]);
+//   for (var i = 2; i < inputArray.length; i++) {
+//     if (Math.abs(inputArray[i] - inputArray[i - 1]) > max) {
+//       max = Math.abs(inputArray[i] - inputArray[i - 1]);
+//     }
+//   }
+//   return max
+// }
+
+
+
+
+// function solution(inputString) {
+//   let arr = inputString.split(".");
+  
+//   if(arr.length == 4) {
+//       return arr.every(number => {
+//           if(number >= 0 && number <= 255 && number != "" && number != "00" && number != "01") return true
+//           return false
+//       })
+//   }
+//     return false  
+// }
+
+
+
+
+
+// function solution(inputArray) {
+//   for(let i = 0; ; i++) {
+//       if(inputArray.every(element => element % i))
+//       return i
+//   }
+// }
+
+
+
+
+
+
+
+
+// function solution(inputArray, elemToReplace, substitutionElem) {
+//   return inputArray.map(element => element === elemToReplace ? substitutionElem : element)
+// }
+
+
+
+
+
+
+// function solution(n) {
+//   return n.toString().split("").every(element => !(Number(element) % 2))
+// }
+
+
+
+
+
+
+// function solution(name) {
+//   return /^[a-z_]\w*$/i.test(name);
+// }
+
+
+
+
+
+
+
+
+// function solution(inputString) {
+//   return inputString.split("").map(element => {
+//       if(element === "z") return 'a'
+//       return String.fromCharCode(element.charCodeAt() + 1)
+//   }).join("")
+// }
+
+
+
 
 
 
@@ -2940,5 +3982,682 @@ a.foo(); */
 // alert(palindrom("aacbcaa"))
 
 
+// setTimeout ==========================================================================
 
-// https://github.com/jeantimex/javascript-problems-and-solutions#array
+// let list = [
+//   "Joe",
+//   "Rob",
+//   "Mike",
+//   "Lisa",
+//   "Zara"
+// ]
+
+// let searchText = "";
+
+// const input = document.querySelector("input");
+// input.addEventListener("keyup", (e) => {
+//   searchText = e.target.value
+//   refresh();
+// })
+// let id;
+// function refresh() {
+//   if(id !== undefined) {
+//     clearTimeout(id);
+//   }
+//   id = setTimeout(() => {
+//     render();
+//   }, 500)
+// }
+
+// const root = document.querySelector("#root");
+
+// function render() {
+//   root.innerHTML = ""
+//   list.filter((name) => {
+//     return name.indexOf(searchText) !== -1  
+//   }).map((name) => {
+//     const div = document.createElement("div");
+//     div.innerText = name;
+//     return div
+//   }).forEach((el) => {
+//     root.appendChild(el)
+//   })
+// }
+
+
+
+
+// function func(x, y, callback) {
+//   const a = x + 2;
+//   const b = y + 2;
+//   const c = x + y;
+//   setTimeout(function() {
+//     callback(c * 2);
+//   }, 1000)
+// }
+
+// func(2, 4, function(result) {
+//   alert(result)
+// })
+
+// Promise =============================================================================
+
+// function func(x, y) {
+//   const a = x + 2;
+//   const b = y + 2;
+//   const c = x + y;
+
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve(c * 2);
+//     }, 1000)
+//   })
+// }
+
+// const promise = func(2, 4);
+
+// promise.then(function(result) {
+//   alert(result)
+// })
+
+
+
+
+
+// function func() {
+//   return new Promise(function(resolve, reject) {
+//     setTimeout(function() {
+//       resolve(8);
+//     }, 1000)
+//   })
+// }
+
+
+
+
+// Resolve
+
+// const p = func();
+
+// p.then(function(result) {
+//   return result + 1;
+// }).then(function(result) {
+//   return result + 2;
+// }).then(function(result) {
+//   alert(result)
+// })
+
+
+
+
+
+// function func() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve(8);
+//     }, 1000)
+//   })
+// }
+
+// function func2(val) {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       resolve(val + 9);
+//     }, 1000)
+//   })
+// }
+
+// func().then(function (result) {
+//   return func2(result);
+// }).then(function (result) {
+//   return result + 2;
+// }).then(function (result) {
+//   alert(result)
+// })
+
+
+// Reject
+
+// function func() {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       reject(new Error("Vay Error tvec"));
+//     }, 1000)
+//   })
+// }
+
+// const p = func();
+
+// p.then(function(result) {
+//   alert(result);
+// }).then(function() {
+//   return 1;
+// }).catch(function(error) {
+//   alert(error);
+// })
+
+
+// Վարժություն 
+
+// function func1() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(2), 1000);
+//   });
+// }
+// function func2(val) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(val + 3), 1000);
+//   });
+// }
+// function func3(val) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve(val + 4), 1000);
+//   });
+// }
+
+// func1()
+// 	.then((result) => func2(result))
+//   .catch((error) => 5)
+//   .then((result) => {
+//     alert(result); // 5
+//   	throw new Error("oops");
+//    })
+//   .then((result) => func3(result))
+//   .catch((error) => func3(2)) 
+//   .then((result) => func2(result))
+//   .then((result) => alert(result)); // 9
+
+// Վարժություն 2
+
+// function job(state) {
+//   return new Promise(function(resolve, reject) {
+//       if (state) {
+//           resolve('success');
+//       } else {
+//           reject('error');
+//       }
+//   });
+// }
+
+// job(true).then(function(data) {
+//   console.log(data); // success
+//   return job(true);
+// }).then(function(data) {
+//   if (data !== 'victory') {
+//       throw 'Defeat';
+//   }
+//   return job(true);
+// }).then(function(data) {
+//   console.log(data); 
+// }).catch(function(error) {
+//   console.log(error); // Defeat
+//   return job(false);
+// }).then(function(data) {
+//   console.log(data);
+//   return job(true);
+// }).catch(function(error) {
+//   console.log(error); // error
+//   return 'Error caught';
+// }).then(function(data) {
+//   console.log(data); // 'Error caught'
+//   return new Error('test');
+// }).then(function(data) {
+//   console.log('Success:', data.message); // Success: test
+// }).catch(function(data) {
+//   console.log('Error:', data.message);
+// });
+
+
+// Fetch ========================================================================
+
+// fetch("https://corona-api.com/countries/am").then(function (response) {
+//   return response.json()
+// }).then(function (response) {
+//   const target = document.querySelector("#target");
+//   target.innerText = response.data.today.con firmed
+// })
+
+// Fertch Promise.all
+
+// Promise.all([
+//   fetch("https://corona-api.com/countries/am"),
+//   fetch("https://corona-api.com/countries/ru"),
+//   fetch("https://corona-api.com/countries/us")
+//  ]).then((streams) => {
+//    return Promise.all(streams.map((stream) => stream.json()));
+//  }).then((results) => {
+//    alert(JSON.stringify(results, null, 2));
+//  }).catch((error) => {
+//    alert(error);
+//  });
+
+
+
+
+
+// async / await ============================================================
+
+// function func() {
+//   return new Promise(function (resolve, reject) {
+//     // resolve(9);
+//     reject(new Error("Error"))
+//   })
+// }
+
+// async function func2() {
+//   try {
+//     const r = await func();
+//     return r + 2
+//   } catch (error) {
+//     return "Error/"
+//   }
+
+// }
+
+// func2().then(function (result) {
+//   alert(result)
+// }).catch(function (error) {
+//   alert(error)
+// })
+
+// Javascript - Array and Object Destructuring(Ապակառուցում) ======================================================
+
+// const person = {
+//   firstName: "Joe",
+//   lastName: "Smith",
+//   // age: 33,
+//   friends: [],
+//   favoriteColor: "red"
+// };
+
+// function printInfo({firstName, lastName, age="unknonw"}) {   // Կարճ գրելաձև
+
+// const firstName = persoObj.firstName;
+// const lastName = persoObj.lastName;
+// const age = persoObj.age;
+
+//   alert(firstName + " " + lastName + " " + " is " + age + " years old" );
+// }
+
+// printInfo(person);
+
+
+// const list = [
+//   5, 9, 33, 100
+// ]
+
+// const [a, b] = list
+
+// console.log(a, b); // a = 5, b = 9
+
+
+
+
+/* ======================================================== (OOP) Object oriented programming  ============================================= */
+
+
+// Եթե ունենք օբյեկտների հավաքածու որի մեջ նույն բանն է գրվում ուրեմն կառուցում ենք function constructor
+// Սա սխալ է
+//  const person1 = {
+//   name: "Joe",
+//   lastName: "Jaspers",
+//   age: 55,
+//   friends: [],
+//   getFullName() {
+//     return this.name + " " + this.lastName;
+//   },
+//  }
+
+//  const person2 = {
+//   name: "Mike",
+//   lastName: "Jackson",
+//   age: 22,
+//   friends: [],
+//   getFullName() {
+//     return this.name + " " + this.lastName;
+//   }
+//  }
+
+
+
+
+// function constructor
+
+// function Cat() {
+//   this.saySomething = () => {
+//     alert("mew");
+//   }
+// }
+
+
+// function Person(name, lastName, age) {
+//   this.name = name,
+//   this.lastName = lastName,
+//   this.age = age
+//   this.friends = [],
+//   this.getFullName = () => {
+//     return this.name + " " + this.lastName
+//   }
+// }
+
+// const person = new Person("Joe", "Jaspers", 55);
+// const person2 = new Person("Mike", "Jackson", 25)
+
+// const cat1 = new Cat();
+// instanceof նշանակում է person-ը օրինակ է Person-ին
+// alert(person instanceof Person) // true
+
+
+
+
+// OOP - Encapsulation ===================================================================================
+
+// const canvas = document.querySelector("canvas");
+// const context = canvas.getContext("2d");
+
+// function Hero(x, y, width, height) {
+//   const heroImg = document.createElement("img");
+//   heroImg.src = "https://1001freedownloads.s3.amazonaws.com/vector/thumb/135655/nicubunu_Game_baddie_Ninja.png";
+
+//   let xDelta = 0;
+//   let yDelta = 0;
+
+//   this.update = () => {
+//     x += xDelta;
+//     y += yDelta;
+//   };
+
+//   this.render = () => {
+//     context.drawImage(heroImg, x, y, width, height);
+//   };
+
+//   this.goRight = () => {
+//     xDelta = 1;
+//   };
+//   this.goLeft = () => {
+//     xDelta = -1;
+//   };
+//   this.stop = () => {
+//     xDelta = 0;
+//   };
+
+// }
+
+// let data = {
+//   hero: new Hero(20, 20, 40, 40)
+// }
+
+// function update() {
+//   data.hero.update();
+// }
+
+// function render() {
+//   context.clearRect(0, 0, canvas.width, canvas.height);
+//   data.hero.render();
+// }
+
+// function loop() {
+//   requestAnimationFrame(loop);
+//   update();
+//   render();
+// }
+
+// loop();
+
+// document.addEventListener("keydown", (evt) => {
+//   if (evt.code === "ArrowRight") {
+//     data.hero.goRight();
+//   } else if (evt.code === "ArrowLeft") {
+//     data.hero.goLeft();
+//   }
+// });
+
+// document.addEventListener("keyup", () => {
+//   data.hero.stop();
+// });
+
+
+/*  OOP - Նախատիպային ժառանգություն (Prototypal Inheritance) ========================================================= */
+
+
+// const b = {
+//   lastName: "Jackson"
+// }
+
+// const a = Object.create(b);
+// a.age = 25
+
+// console.log(a.lastName);
+
+
+
+// const a = {
+//   lastName: "Jackson"
+// }
+
+// function A() {
+//   this.name = "Joe"
+// }
+// A.prototype = b;
+
+// const b = new A();
+
+// alert(a.name)
+
+
+
+// const a = {};
+
+// Object.prototype.toString = function() {
+//   return "yay";
+// }
+
+// alert(a);
+
+
+// OOP - Դասական ժառանգություն (Classical Inheritance) ===============================================
+
+// class Animal {
+//   constructor(name) {
+//     this._name = name
+//   }
+//   toString() {
+//     return this._name;
+//   }
+// }
+
+// class Dog extends Animal{
+//   constructor(name, age) {
+//     super(name);
+//     this._age = age
+//   }
+//   talk() {
+//     alert(this._name + " says woof");
+//   }
+//   toString() {
+//     return "Dog names " + super.toString();  // super = cnox toString
+//   }
+// }
+
+// const dog1 = new Dog("Pickles", 18)
+// alert(dog1.toString());
+
+
+// class Cat extends Animal{
+//   talk() {
+//     return this._name + " says mew";
+//   }
+// }
+
+// const cat1 = new Cat("Bunny");
+// alert(cat1.talk())
+
+// alert(dog1 instanceof Animal) // true
+
+
+
+
+// OOP - Պոլիմորֆիզմ (Polymorphism) ==========================================================
+
+// function hi(...args) {
+//   if(args.length === 0) {
+//     alert("hi")
+//   } else if (args.length === 1) {
+//     alert("Hello " + args[0]);
+//   } else if (args.length === 2) {
+//     alert("Greetings " + args[0] + " " + args[1])
+//   }
+// }
+
+// hi();
+// hi("Michael");
+// hi("Michael", "Jackson");
+
+
+// const data = [{
+//     name: "Joe",
+//     age: 33
+//   },
+//   {
+//     name: "Mike",
+//     age: 22
+//   },
+//   {
+//     name: "Susan",
+//     age: 19
+//   }
+// ];
+
+// function find(...args) {
+//   if (typeof (args[0]) === "number") {
+//     return data.filter(obj => obj.age === args[0]);
+//   } else {
+//     return data.filter(obj => obj.name === args[0]);
+//   }
+// }
+
+// alert(JSON.stringify(find("Joe")));
+// alert(JSON.stringify(find(19)));
+
+
+
+
+// class Animal {
+//   saySomething() {
+//     alert("err, i'm an animal");
+//   }
+// }
+
+// class Dog extends Animal {
+//   saySomething() {
+//     alert("woof");
+//   }
+// }
+
+// const animal1 = new Animal();
+// const dog1 = new Dog();
+
+// animal1.saySomething();
+// dog1.saySomething();
+
+
+
+
+// OOP - Աբստրակցիա (Abstraction) ===============================================================================
+
+// class Person {
+//   constructor(name, lastName, passportId, studentId, salary) {
+//     this._name = name;
+//     this._lastName = lastName;
+//     this._passportId = passportId;
+//     this._studentId = studentId;
+//     this._salary = salary;
+//     this._courses = [];
+//   }
+//   getName() {
+//     return this._name;
+//   }
+//   setName() {
+//     this._name = name;
+//   }
+//   getFullName() {
+//     return this._name + " " + this._lastName;
+//   }
+//   getPassportId() {
+//     return this._passportId;
+//   }
+//   getStudentId() {
+//     return this._studentId;
+//   }
+//   getSalary() {
+//     return this._salary;
+//   }
+//   setSalary() {
+//     this._salary = salary;
+//   }
+//   getCourses() {
+//     return this._courses;
+//   }
+//   addCourses(course) {
+//     this._courses.push(course);
+//   }
+//   removeCourse(courseId) {
+//     this._courses = this.courses.filter(course => course.id !== courseId);
+//   }
+//   clearCourses() {
+//     this._courses = [];
+//   }
+// }
+
+// const person = new Person("Mesrop", "Ademyan", "AU3846866", "UNI8975860", 450000);
+
+// person.addCourses({
+//   name: "Intorduction to Computer Science",
+//   id: "CS110"
+// })
+
+// person.addCourses({
+//   name: "Intorduction to Biology",
+//   id: "BIO1474"
+// })
+
+
+// function funcForStudent(student) {
+//   const id = student.getStudentId();
+//   const courseNames = student.getCourses().map((course) => course.name);
+//   alert("Student with the id of " + id + " is studying " + courseNames.join(", ") + " courses");
+// }
+
+// // Այսպես մենք կանչում ենք ֆունկցիան person օբյեկտով իր բոլոր ֆունկցիաներով որը մեզ պետք չի
+// // funcForStudent(person);
+
+// // Դրա համար կանչում ենք այսպես
+// funcForStudent({
+//   getStudentId() {
+//     return person.getStudentId();
+//   },
+//   getCourses() {
+//     return person.getCourses();
+//   }
+// });
+
+
+
+// OOP - Ստատիկ (Static) ============================================================================
+
+// class Person {
+//   sayHi() {
+//     alert("hi");
+//   }
+//   sayBye() {
+//     alert("bye")
+//   }
+// }
+// // Ays funkcian karox enq kanchel miayn ayspes: Person.boo() ;;;;;; Aysinqn inqy hasaneli che person1-i hamar
+// Person.boo() = function() {
+//   alert("boo");
+// }
+// // bayc chenq karox kanchel Person.sayHi();
+// // Person.sayHi(); // is not defined
+
+// const person1 = new Person();
